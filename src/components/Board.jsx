@@ -125,30 +125,45 @@ function Board(){
         setChoiceTwo(null)
         }
         
-    return (
-            <div className="my-bg">
-            <h1 className="mb-14">Memory game</h1>
-            <div className="flex items-center justify-between mb-4">
-                <p className="font-bold">Nombre de coups : {counter}</p>
-                <button className="rounded-full bg-rose-400 hover:bg-rose-500 text-white" onClick={() => {setLevel(4)}}>Rejouer</button>
-            </div>
-            {showConfetti && <Confetti recycle={false} />}
+ return (
+    <main className="flex flex-col  items-center justify-start px-4">
+      <h1 className="mb-8 text-6xl font-bold">Memory Game</h1>
 
-            <div className="grid grid-cols-4 gap-4">
-                {cards.map(({fig, id, flipped})=>(
-                    <Card
-                    id={id}
-                    key={id}
-                    fig={fig}
-                    flipped={flipped}
-                    handleCounter={handleCounter}
-                    handleChoice={handleChoice}
-                    />
-                ))}
-            </div>
-            <button className="rounded-full bg-rose-400 hover:bg-rose-500 text-white  mt-6" onClick={increaseLevel}>Ajouter des cartes </button>   
-        </div>
-    )
+      <div className="flex w-full max-w-4xl items-center justify-between mb-4">
+        <p className="font-bold">Nombre de coups : {counter}</p>
+        <button
+          className="rounded-full bg-rose-400 hover:bg-rose-500 text-white px-4 py-2"
+          onClick={() => {
+            setLevel(4);
+          }}
+        >
+          Rejouer
+        </button>
+      </div>
+
+      {showConfetti && <Confetti recycle={false} />}
+
+      <div className="grid grid-cols-4 gap-4">
+        {cards.map(({ fig, id, flipped }) => (
+          <Card
+            key={id}
+            id={id}
+            fig={fig}
+            flipped={flipped}
+            handleCounter={handleCounter}
+            handleChoice={handleChoice}
+          />
+        ))}
+      </div>
+
+      <button
+        className="rounded-full bg-rose-400 hover:bg-rose-500 text-white px-4 py-2 mt-6"
+        onClick={increaseLevel}
+      >
+        Ajouter des cartes
+      </button>
+    </main>
+  );
 }
 
 export default Board

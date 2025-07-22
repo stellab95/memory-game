@@ -2,7 +2,7 @@ import backCard from '../assets/img/backCard.png'
 
 export default function Card({ fig, handleChoice, id, flipped, handleCounter }) {
   return (
-    <div className="flip-card w-40 h-40" onClick={() => {
+    <div className="flip-card w-32 h-32 cursor-pointer" onClick={() => {
       if (!flipped) {
         handleChoice(id)
         handleCounter()
